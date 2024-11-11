@@ -1,10 +1,14 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Menu, X, Sparkles } from 'lucide-react';
+import { Menu, X, Sparkles, Phone } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+
+  const handleCall = () => {
+    window.location.href = 'tel:+18483463282';
+  };
 
   return (
     <nav className="bg-black/95 backdrop-blur-sm fixed w-full z-50">
@@ -33,7 +37,11 @@ const Navbar = () => {
                 </div>
               </div>
               <NavLink to="/contact">Contact</NavLink>
-              <button className="bg-gradient-to-r from-purple-600 to-blue-500 text-white px-6 py-2 rounded-full hover:opacity-90 transition-opacity">
+              <button 
+                onClick={handleCall}
+                className="inline-flex items-center bg-gradient-to-r from-purple-600 to-blue-500 text-white px-6 py-2 rounded-full hover:opacity-90 transition-opacity"
+              >
+                <Phone className="h-4 w-4 mr-2" />
                 Book a Call
               </button>
             </div>
@@ -69,7 +77,11 @@ const Navbar = () => {
             <MobileNavLink to="/analytics-services" onClick={() => setIsOpen(false)}>- Analytics Services</MobileNavLink>
             <MobileNavLink to="/contact" onClick={() => setIsOpen(false)}>Contact</MobileNavLink>
             <div className="px-3 py-2">
-              <button className="w-full bg-gradient-to-r from-purple-600 to-blue-500 text-white px-6 py-2 rounded-full hover:opacity-90 transition-opacity">
+              <button 
+                onClick={handleCall}
+                className="w-full inline-flex items-center justify-center bg-gradient-to-r from-purple-600 to-blue-500 text-white px-6 py-2 rounded-full hover:opacity-90 transition-opacity"
+              >
+                <Phone className="h-4 w-4 mr-2" />
                 Book a Call
               </button>
             </div>
