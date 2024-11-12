@@ -9,13 +9,85 @@ Allow: /about
 Allow: /services
 Allow: /contact
 
-# Service Pages (parent directories)
+# Service Categories
 Allow: /video-services
 Allow: /audio-services
 Allow: /image-services
 Allow: /content-services
 Allow: /analytics-services
 Allow: /automation-services
+
+# Video Service Pages
+Allow: /video-services/ai-presenter
+Allow: /video-services/video-translation
+Allow: /video-services/content-repurposing
+Allow: /video-services/explainer-videos
+Allow: /video-services/interactive-avatars
+Allow: /video-services/motion-graphics
+Allow: /video-services/b-roll-footage
+Allow: /video-services/product-demos
+Allow: /video-services/training-videos
+Allow: /video-services/social-optimization
+
+# Audio Service Pages
+Allow: /audio-services/voice-synthesis
+Allow: /audio-services/ivr-systems
+Allow: /audio-services/podcast-production
+Allow: /audio-services/audio-translation
+Allow: /audio-services/background-music
+Allow: /audio-services/speech-to-text
+Allow: /audio-services/audio-restoration
+Allow: /audio-services/dynamic-ads
+Allow: /audio-services/voice-cloning
+Allow: /audio-services/audiobook-creation
+
+# Image Service Pages
+Allow: /image-services/brand-imagery
+Allow: /image-services/product-visualization
+Allow: /image-services/logo-design
+Allow: /image-services/youtube-thumbnails
+Allow: /image-services/comic-illustration
+Allow: /image-services/photo-packs
+Allow: /image-services/virtual-representative
+Allow: /image-services/virtual-staging
+Allow: /image-services/ai-art
+Allow: /image-services/image-enhancement
+
+# Content Service Pages
+Allow: /content-services/long-form-content
+Allow: /content-services/marketing-content
+Allow: /content-services/social-media
+Allow: /content-services/email-automation
+Allow: /content-services/product-content
+Allow: /content-services/website-content
+Allow: /content-services/technical-content
+Allow: /content-services/video-audio-content
+Allow: /content-services/multilingual-content
+Allow: /content-services/content-optimization
+
+# Analytics Service Pages
+Allow: /analytics-services/performance-analytics
+Allow: /analytics-services/predictive-analysis
+Allow: /analytics-services/market-research
+Allow: /analytics-services/sentiment-analysis
+Allow: /analytics-services/customer-behavior
+Allow: /analytics-services/data-visualization
+Allow: /analytics-services/sales-analytics
+Allow: /analytics-services/digital-performance
+Allow: /analytics-services/social-analytics
+Allow: /analytics-services/competitive-intelligence
+
+# Automation Service Pages
+Allow: /automation-services/workflow-automation
+Allow: /automation-services/website-development
+Allow: /automation-services/customer-experience
+Allow: /automation-services/sales-marketing
+Allow: /automation-services/finance-operations
+Allow: /automation-services/project-management
+Allow: /automation-services/document-processing
+Allow: /automation-services/hr-automation
+Allow: /automation-services/calendar-intelligence
+Allow: /automation-services/business-intelligence
 
 # Static Assets
 Allow: /*.js
