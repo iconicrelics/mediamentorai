@@ -5,7 +5,9 @@ import { useInView } from 'react-intersection-observer';
 import { useParams, Link } from 'react-router-dom';
 import { ArrowRight, CheckCircle2, ArrowLeft } from 'lucide-react';
 import { imageServices } from '../../data/imageServices';
-import Newsletter from '../../components/Newsletter';
+import ServiceBackground from '../../components/ServiceBackground';
+import ServiceFeatureCard from '../../components/ServiceFeatureCard';
+import ProcessTimeline from '../../components/ProcessTimeline';
 
 const ImageServiceDetail = () => {
   const { id } = useParams();
@@ -35,6 +37,33 @@ const ImageServiceDetail = () => {
 
   const ServiceIcon = service.icon;
 
+  const getEnhancedDescription = (service: any) => {
+    switch (service.id) {
+      case 'brand-imagery':
+        return `Elevate your brand's visual presence with our cutting-edge AI-powered brand imagery solutions. Our advanced neural networks create stunning, on-brand visuals that maintain perfect consistency across all your marketing channels. Generate unlimited unique images that perfectly capture your brand's essence, style, and values. From social media content to marketing materials, our AI ensures every image aligns with your brand guidelines while standing out in today's competitive digital landscape. Save countless hours of photoshoots and editing while maintaining the highest standards of visual excellence.`;
+      case 'product-visualization':
+        return `Transform your product presentations with our state-of-the-art AI product visualization technology. Create photorealistic 3D renders and lifestyle contexts that showcase your products in their best light, without expensive photo shoots or physical samples. Our advanced AI generates perfect lighting, shadows, and reflections that make your products look stunning from every angle. Whether you need e-commerce images, catalog shots, or promotional materials, our system delivers professional-quality visuals that drive conversions and enhance your brand's perceived value.`;
+      case 'logo-design':
+        return `Revolutionize your brand identity with our AI-powered logo design service, combining creativity with data-driven insights to create unique, memorable logos that resonate with your target audience. Our sophisticated algorithms analyze current design trends, color psychology, and industry standards to generate distinctive logos that stand the test of time. Experience rapid iteration and refinement processes, allowing you to explore countless creative possibilities while maintaining complete control over your brand's visual identity. Create a professional, scalable logo that works seamlessly across all platforms and applications.`;
+      case 'youtube-thumbnails':
+        return `Maximize your video content's impact with our AI-driven thumbnail creation service, designed to boost click-through rates and audience engagement. Our advanced algorithms analyze successful thumbnail patterns and viewer behavior to generate eye-catching designs that stand out in crowded feeds. Create consistent, branded thumbnails that maintain professional quality while saving hours of design time. Whether you're a content creator or brand marketer, our system ensures your videos get the attention they deserve with thumbnails optimized for maximum impact.`;
+      case 'comic-illustration':
+        return `Bring your stories to life with our AI-powered comic and illustration generation service. Our advanced neural networks create stunning, stylized artwork that captures the perfect mood and atmosphere for your narrative. Whether you need character designs, scene compositions, or complete comic panels, our system delivers professional-quality illustrations that engage and captivate your audience. Transform your ideas into visually compelling stories with consistent style and artistic excellence across every frame.`;
+      case 'photo-packs':
+        return `Access unlimited, unique visual content with our AI-generated custom photo pack service. Create comprehensive libraries of perfectly matched, royalty-free images that align with your brand's visual identity and messaging needs. Our advanced AI ensures consistent style, lighting, and composition across all generated images, providing you with a cohesive visual language for your marketing materials. Save thousands on traditional stock photo subscriptions while maintaining complete creative control over your visual assets.`;
+      case 'virtual-representative':
+        return `Create a compelling digital presence with our AI virtual brand representative service. Our advanced technology generates consistent, professional avatars that embody your brand's personality and values across all digital touchpoints. Whether you need a virtual spokesperson, customer service representative, or brand ambassador, our system creates photorealistic digital humans that maintain perfect consistency in appearance, expression, and presentation. Build stronger connections with your audience through personalized, scalable virtual interactions.`;
+      case 'virtual-staging':
+        return `Transform empty spaces into stunning, fully-furnished environments with our AI-powered virtual staging technology. Create photorealistic interior designs that help potential buyers envision the full potential of any space. Our advanced algorithms generate perfectly lit, professionally styled rooms that enhance property marketing materials while saving thousands on traditional staging costs. Whether you're in real estate, interior design, or architectural visualization, our system delivers compelling, customizable results that drive engagement and sales.`;
+      case 'ai-art':
+        return `Push the boundaries of creativity with our AI art generation service, combining cutting-edge technology with artistic innovation to create unique, compelling visual assets. Our advanced neural networks can generate stunning artwork in any style, from classical to contemporary, while maintaining consistent quality and artistic vision. Perfect for creating unique NFT collections, digital art installations, or custom decorative elements that set your brand apart. Experience unlimited creative possibilities while maintaining full control over your artistic direction.`;
+      case 'image-enhancement':
+        return `Elevate your visual content with our comprehensive AI image enhancement service. Our sophisticated algorithms analyze and optimize every aspect of your images, from color correction and sharpness to composition and detail enhancement. Transform ordinary photos into stunning visuals that capture attention and drive engagement across all platforms. Whether you need to enhance product photos, marketing materials, or social media content, our system ensures professional quality results while maintaining natural authenticity.`;
+      default:
+        return service.description;
+    }
+  };
+
   return (
     <>
       <Helmet>
@@ -54,14 +83,9 @@ const ImageServiceDetail = () => {
       </Helmet>
 
       {/* Hero Section */}
-      <section className="relative pt-32 pb-20 bg-black overflow-hidden">
-        <motion.div 
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 0.2 }}
-          transition={{ duration: 1.5 }}
-          className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1620641788421-7a1c342ea42e')] bg-cover bg-center"
-        />
-        <div className="absolute inset-0 bg-gradient-to-br from-purple-900/90 via-black to-black" />
+      <section className="relative min-h-[60vh] pt-32 pb-20 bg-black overflow-hidden">
+        <ServiceBackground type="image" />
+        
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <Link
             to="/image-services"
@@ -70,10 +94,12 @@ const ImageServiceDetail = () => {
             <ArrowLeft className="h-4 w-4 mr-2" />
             Back to Image Services
           </Link>
+          
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
+            className="max-w-3xl"
           >
             <div className="flex items-center mb-6">
               <div className="bg-gradient-to-r from-purple-500 to-blue-500 p-3 rounded-2xl mr-4">
@@ -81,7 +107,9 @@ const ImageServiceDetail = () => {
               </div>
               <h1 className="text-4xl md:text-6xl font-bold text-white">{service.title}</h1>
             </div>
-            <p className="text-xl text-gray-300 max-w-3xl">{service.description}</p>
+            <p className="text-xl text-gray-300 leading-relaxed">
+              {getEnhancedDescription(service)}
+            </p>
           </motion.div>
         </div>
       </section>
@@ -90,39 +118,16 @@ const ImageServiceDetail = () => {
       <section ref={ref} className="bg-black py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-            {/* Features */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.5 }}
-            >
-              <h2 className="text-2xl font-bold text-white mb-6">Key Features</h2>
-              <div className="space-y-4">
-                {service.features.map((feature, index) => (
-                  <div key={index} className="flex items-start">
-                    <CheckCircle2 className="h-5 w-5 text-purple-400 mr-3 mt-1 flex-shrink-0" />
-                    <span className="text-gray-300">{feature}</span>
-                  </div>
-                ))}
-              </div>
-            </motion.div>
-
-            {/* Benefits */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.5, delay: 0.2 }}
-            >
-              <h2 className="text-2xl font-bold text-white mb-6">Benefits</h2>
-              <div className="space-y-4">
-                {service.benefits.map((benefit, index) => (
-                  <div key={index} className="flex items-start">
-                    <CheckCircle2 className="h-5 w-5 text-purple-400 mr-3 mt-1 flex-shrink-0" />
-                    <span className="text-gray-300">{benefit}</span>
-                  </div>
-                ))}
-              </div>
-            </motion.div>
+            <ServiceFeatureCard
+              title="Key Features"
+              items={service.features}
+              delay={0.2}
+            />
+            <ServiceFeatureCard
+              title="Benefits"
+              items={service.benefits}
+              delay={0.4}
+            />
           </div>
         </div>
       </section>
@@ -131,50 +136,16 @@ const ImageServiceDetail = () => {
       <section className="bg-black py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-            {/* Use Cases */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.5, delay: 0.4 }}
-            >
-              <h2 className="text-2xl font-bold text-white mb-6">Use Cases</h2>
-              <div className="space-y-4">
-                {service.useCases.map((useCase, index) => (
-                  <div key={index} className="flex items-start">
-                    <CheckCircle2 className="h-5 w-5 text-purple-400 mr-3 mt-1 flex-shrink-0" />
-                    <span className="text-gray-300">{useCase}</span>
-                  </div>
-                ))}
-              </div>
-            </motion.div>
-
-            {/* Process */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.5, delay: 0.6 }}
-            >
+            <ServiceFeatureCard
+              title="Use Cases"
+              items={service.useCases}
+              delay={0.6}
+            />
+            <div>
               <h2 className="text-2xl font-bold text-white mb-6">Our Process</h2>
-              <div className="space-y-6">
-                {service.process.map((step, index) => (
-                  <div key={index} className="relative pl-8">
-                    <div className="absolute left-0 top-0 w-6 h-6 rounded-full bg-purple-400 flex items-center justify-center">
-                      <span className="text-black font-bold text-sm">{index + 1}</span>
-                    </div>
-                    <h3 className="text-white font-semibold mb-1">{step.step}</h3>
-                    <p className="text-gray-400">{step.description}</p>
-                  </div>
-                ))}
-              </div>
-            </motion.div>
+              <ProcessTimeline steps={service.process} />
+            </div>
           </div>
-        </div>
-      </section>
-
-      {/* Newsletter Section */}
-      <section className="bg-black pb-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <Newsletter />
         </div>
       </section>
     </>
