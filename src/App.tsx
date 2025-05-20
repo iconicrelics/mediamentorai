@@ -19,6 +19,7 @@ import ContentServices from './pages/content-services';
 import ContentServiceDetail from './pages/content-services/[id]';
 import AnalyticsServices from './pages/analytics-services';
 import AnalyticsServiceDetail from './pages/analytics-services/[id]';
+import BasicScene from './components/3d/BasicScene';
 
 const App: React.FC = () => {
   return (
@@ -44,6 +45,7 @@ const App: React.FC = () => {
               <Route path="/content-services/:id" element={<ContentServiceDetail />} />
               <Route path="/analytics-services" element={<AnalyticsServices />} />
               <Route path="/analytics-services/:id" element={<AnalyticsServiceDetail />} />
+              <Route path="/basic-scene" element={<BasicScene />} />
             </Routes>
           </main>
           <Footer />

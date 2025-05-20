@@ -2,8 +2,9 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Helmet } from 'react-helmet-async';
 import { useInView } from 'react-intersection-observer';
-import { ArrowRight, Sparkles, Target, Zap, Star, Layers, Cpu, Server } from 'lucide-react';
+import { ArrowRight, Target, Zap, Star, Layers, Cpu, Server } from 'lucide-react';
 import { services } from '../data/services';
+import HeroAnimation from '../components/3d/HeroAnimation'; // Import the new component
 
 const Home = () => {
   const [ref, inView] = useInView({
@@ -57,54 +58,8 @@ const Home = () => {
         <meta name="description" content="Transform your business with cutting-edge AI solutions. Expert AI services in video production, audio synthesis, image generation, automation, content creation, and analytics. Start your AI journey today." />
       </Helmet>
 
-      {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center bg-black overflow-hidden pt-20">
-        <div className="absolute inset-0 opacity-30">
-          <div className="absolute inset-0 bg-gradient-to-br from-purple-900 via-black to-blue-900" />
-        </div>
-        <motion.div 
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 0.2 }}
-          transition={{ duration: 1.5 }}
-          className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1620712943543-bcc4688e7485')] bg-cover bg-center"
-        />
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="text-4xl md:text-7xl font-bold text-white mb-6 leading-tight"
-          >
-            Transform Your Business
-            <br />
-            <span className="bg-gradient-to-r from-purple-400 to-blue-400 text-transparent bg-clip-text">
-              with AI Innovation
-            </span>
-          </motion.h1>
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto"
-          >
-            Unlock the future of business with our cutting-edge AI solutions tailored for your success
-          </motion.p>
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            className="space-x-4"
-          >
-            <a
-              href="/services"
-              className="inline-flex items-center px-8 py-3 rounded-full text-base font-medium text-white bg-gradient-to-r from-purple-600 to-blue-500 hover:opacity-90 transition-opacity"
-            >
-              Where We Can Help
-              <ArrowRight className="ml-2 h-5 w-5" />
-            </a>
-          </motion.div>
-        </div>
-      </section>
+      {/* New Hero Section with 3D Animation */}
+      <HeroAnimation />
 
       {/* Services Preview Section */}
       <section ref={ref} className="bg-black py-20">
