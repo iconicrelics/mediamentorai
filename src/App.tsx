@@ -3,10 +3,14 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
+import LoadingScreen from './components/LoadingScreen';
+import ScrollProgress from './components/ScrollProgress';
 import Home from './pages/Home';
 import About from './pages/About';
 import Services from './pages/Services';
 import Contact from './pages/Contact';
+import Calculator from './pages/Calculator';
+import Quiz from './pages/Quiz';
 import VideoServices from './pages/video-services';
 import VideoServiceDetail from './pages/video-services/[id]';
 import AudioServices from './pages/audio-services';
@@ -19,12 +23,13 @@ import ContentServices from './pages/content-services';
 import ContentServiceDetail from './pages/content-services/[id]';
 import AnalyticsServices from './pages/analytics-services';
 import AnalyticsServiceDetail from './pages/analytics-services/[id]';
-import BasicScene from './components/3d/BasicScene';
 
 const App: React.FC = () => {
   return (
     <HelmetProvider>
       <BrowserRouter>
+        <LoadingScreen />
+        <ScrollProgress />
         <div className="flex flex-col min-h-screen">
           <Navbar />
           <main className="flex-grow">
@@ -33,6 +38,8 @@ const App: React.FC = () => {
               <Route path="/about" element={<About />} />
               <Route path="/services" element={<Services />} />
               <Route path="/contact" element={<Contact />} />
+              <Route path="/calculator" element={<Calculator />} />
+              <Route path="/quiz" element={<Quiz />} />
               <Route path="/video-services" element={<VideoServices />} />
               <Route path="/video-services/:id" element={<VideoServiceDetail />} />
               <Route path="/audio-services" element={<AudioServices />} />
@@ -45,7 +52,6 @@ const App: React.FC = () => {
               <Route path="/content-services/:id" element={<ContentServiceDetail />} />
               <Route path="/analytics-services" element={<AnalyticsServices />} />
               <Route path="/analytics-services/:id" element={<AnalyticsServiceDetail />} />
-              <Route path="/basic-scene" element={<BasicScene />} />
             </Routes>
           </main>
           <Footer />
