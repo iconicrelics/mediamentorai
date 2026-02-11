@@ -1,3 +1,3 @@
 # mediamentorai
 
-[Edit in StackBlitz next generation editor ⚡️](https://stackblitz.com/~/github.com/iconicrelics/mediamentorai)
+[Edit in StackBlitz next generation editor ⚡️](https://stackblitz.com/~/github.com/iconicrelics/mediamentorai)# Build trigger
